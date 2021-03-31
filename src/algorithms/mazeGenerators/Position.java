@@ -4,11 +4,15 @@ public class Position {
     private int row;
     private int col;
 
-    int getRowIndex()
+    public Position(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+    public int getRowIndex()
     {
         return this.row;
     }
-    int getColumnIndex()
+    public int getColumnIndex()
     {
         return this.col;
     }
