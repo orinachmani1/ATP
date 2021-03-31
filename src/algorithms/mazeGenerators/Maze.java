@@ -1,5 +1,8 @@
 package algorithms.mazeGenerators;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Maze {
 
     private Position start;
@@ -49,6 +52,35 @@ public class Maze {
         return grid;
     }
 
+    public ArrayList<Position> validMoves(Position p)
+    {
+        ArrayList posList= new ArrayList<Position>();
+
+        int pRow = p.getRowIndex();
+        int pCol = p.getColumnIndex();
+
+        Position up = new Position(pRow-1, pCol);
+        Position down = new Position(pRow+1, pCol);
+        Position right = new Position(pRow, pCol+1);
+        Position left = new Position(pRow, pCol-1);
+
+        if(isValidMove(up)){posList.add(up);}
+        if(isValidMove(down)){posList.add(down);}
+        if(isValidMove(right)){posList.add(right);}
+        if(isValidMove(left)){posList.add(left);}
+
+        return posList;
+    }
+
+    boolean isValidMove(Position p)
+    {
+        int pRow = p.getRowIndex();
+        int pCol = p.getColumnIndex();
+
+        if (pRow < 0 || pCol < 0 || pRow > rows || pCol > cols){return false;}
+        if (isWall(p)){return false;}
+        return true;
+    }
     boolean isWall (Position p){
         if(grid [p.getRowIndex()] [p.getColumnIndex()] == 1)
         {
