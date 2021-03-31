@@ -7,4 +7,5 @@ public class MyMazeGenerator extends AMazeGenerator{
     }
     //BLA
     //ttttttt
+    //bbbb
 }
