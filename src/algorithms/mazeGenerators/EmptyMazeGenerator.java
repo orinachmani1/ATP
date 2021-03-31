@@ -18,5 +18,6 @@ public class EmptyMazeGenerator extends AMazeGenerator
         maze.genmazer=emptymaze;
         Maze maze1 = maze;
         return maze1;
+
     }
 }
