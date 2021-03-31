@@ -5,4 +5,5 @@ public class MyMazeGenerator extends AMazeGenerator{
     public Maze generate(int rows, int cols) {
         return null;
     }
+    //BLA
 }
