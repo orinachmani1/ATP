@@ -6,6 +6,8 @@ public class EmptyMazeGenerator extends AMazeGenerator
     public Maze generate(int rows, int cols) {
 
         Maze maze= new Maze(rows, cols);
+        Position startPos = new Position(0,1);
+        Position endPos = new Position(rows-1,cols-1);
         int[][] emptyMaze = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++)
@@ -13,6 +15,9 @@ public class EmptyMazeGenerator extends AMazeGenerator
         }
 
         maze.setGrid(emptyMaze);
+        maze.setStart(startPos);
+        maze.setEnd(endPos);
+
         return maze;
     }
 }
