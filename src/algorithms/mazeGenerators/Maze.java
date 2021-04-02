@@ -52,6 +52,13 @@ public class Maze {
         return grid;
     }
 
+    public void setCell(Position p, int n)
+    {
+        int row = p.getRowIndex();
+        int col = p.getColumnIndex();
+        grid[row][col] = n;
+    }
+
     public ArrayList<Position> validMoves(Position p)
     {
         ArrayList posList= new ArrayList<Position>();
@@ -115,12 +122,12 @@ public class Maze {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 Position pos = new Position(i,j);
-                if (isWall(pos)) {System.out.print('1'); }
-                if (!isWall(pos)) {System.out.print('0'); }
+                if (isWall(pos)) {System.out.print('█'); }
+                if (!isWall(pos)) {System.out.print('░'); }
                 else if (isStart(pos)) { System.out.print('S'); }
                 else if (isEnd(pos)) { System.out.print('E'); }
             }
-            System.out.print('\n');
+            System.out.println();
         }
         // █ ░ - symbols for empty and full cells, maybe we used it in future
         return null;
