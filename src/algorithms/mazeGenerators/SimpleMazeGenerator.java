@@ -29,5 +29,6 @@ public class SimpleMazeGenerator extends AMazeGenerator
         maze.setStart(startPos);
         maze.setEnd(endPos);
         return maze;
+        //MAZE
     }
 }
