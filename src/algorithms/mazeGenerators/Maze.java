@@ -122,10 +122,13 @@ public class Maze {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 Position pos = new Position(i,j);
-                if (isWall(pos)) {System.out.print('█'); }
-                if (!isWall(pos)) {System.out.print('░'); }
-                else if (isStart(pos)) { System.out.print('S'); }
+                if (isStart(pos)) { System.out.print('S'); }
                 else if (isEnd(pos)) { System.out.print('E'); }
+                else if (isWall(pos)) {System.out.print('1'); }
+                else if (!isWall(pos)) {System.out.print('0'); }
+//                if (isWall(pos)) {System.out.print('█'); }
+//                if (!isWall(pos)) {System.out.print('░'); }
+
             }
             System.out.println();
         }
