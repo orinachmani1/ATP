@@ -3,9 +3,15 @@ package algorithms.mazeGenerators;
 public class Main {
     public static void main(String[] args) {
         EmptyMazeGenerator m = new EmptyMazeGenerator();
-        Maze tmp = m.generate(3,3);
+        SimpleMazeGenerator sm = new SimpleMazeGenerator();
+
+        Maze tmp = m.generate(1,1);
+        Maze tmp2 = sm.generate(4,4);
+
         tmp.toString();
-        System.out.print("bye bye");
+        System.out.println("bye bye");
+        tmp2.toString();
+        System.out.println("bye bye");
 
 
 
