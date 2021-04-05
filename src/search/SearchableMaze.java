@@ -20,13 +20,7 @@ public class SearchableMaze implements ISearchable {
         goal = new MazeState(maze.getGoalPosition());
         rows = maze.getRows();
         cols = maze.getCols();
-
-        //TODO
-
-
-
     }
-
 
     @Override
     public AState getStartState() {
@@ -40,17 +34,17 @@ public class SearchableMaze implements ISearchable {
 
     @Override
     public ArrayList<AState> getAllPossibleStates(AState s) {
-        /*Position curPos = ((MazeState)s).getCurPosition();
+
+        Position curPos = ((MazeState)s).getCurPosition();
         ArrayList<Position> validMoves = maze.validMoves(curPos);
         if (validMoves.isEmpty()){return null;}
 
         ArrayList<AState> PossibleStates = new ArrayList<AState>();
         for (Position vm : validMoves) {
-            AState state = new AState();
-            String name =
+            AState state = new MazeState(vm);//legal casting??
+            PossibleStates.add(state);
         }
 
-        return PossibleStates;*/
-        return null;
+        return PossibleStates;
     }
 }

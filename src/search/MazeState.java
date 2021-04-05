@@ -11,7 +11,8 @@ public class MazeState extends AState {
     }
 
     public MazeState(Position pos){
-        curPosition = pos;
+        super(pos.toString());
+        curPosition =new Position(pos);
     }
 
     public Position getCurPosition() {
