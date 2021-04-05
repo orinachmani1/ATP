@@ -128,6 +128,7 @@ public class Maze {
                 else if (!isWall(pos)) {System.out.print('0'); }
 //                if (isWall(pos)) {System.out.print('█'); }
 //                if (!isWall(pos)) {System.out.print('░'); }
+                //MAZE
 
             }
             System.out.println();
