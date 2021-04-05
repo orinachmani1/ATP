@@ -2,16 +2,14 @@ package algorithms.mazeGenerators;
 
 public class Main {
     public static void main(String[] args) {
-        EmptyMazeGenerator m = new EmptyMazeGenerator();
-        SimpleMazeGenerator sm = new SimpleMazeGenerator();
+        /*EmptyMazeGenerator m = new EmptyMazeGenerator();
+        Maze tmp = m.generate(4,3);
+        tmp.toString();*/
 
-        Maze tmp = m.generate(1,1);
-        Maze tmp2 = sm.generate(4,4);
-
-        tmp.toString();
-        System.out.println("bye bye");
-        tmp2.toString();
-        System.out.println("bye bye");
+        MyMazeGenerator my = new MyMazeGenerator();
+        Maze tmpMy = my.generate(10,10);
+        tmpMy.toString();
+        System.out.print("bye bye");
 
 
 

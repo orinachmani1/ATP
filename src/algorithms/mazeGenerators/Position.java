@@ -17,4 +17,8 @@ public class Position {
         return this.col;
     }
 
+    @Override
+    public String toString() {
+        return "{" + row + "," + col + "}";
+    }
 }
