@@ -1,6 +1,6 @@
 package search;
 
-public class AState {
+public abstract class AState {
     AState myFather;
     double cost;
     String stateName;
@@ -9,6 +9,12 @@ public class AState {
         cost = 0;
         myFather = null;
         stateName = null;
+    }
+
+    public AState(String name){
+        cost = 0;
+        myFather = null;
+        stateName = name;
     }
 
     public String getStateName() {
@@ -34,4 +40,7 @@ public class AState {
     public void setCost(double cost) {
         this.cost = cost;
     }
+
+    @Override
+    public abstract boolean equals(Object other);
 }

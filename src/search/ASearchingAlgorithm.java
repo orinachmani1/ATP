@@ -3,16 +3,9 @@ package search;
 import java.util.HashSet;
 
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
-    protected  String name;
-    int getNumberOfNodesEvaluated;
-    public ASearchingAlgorithm(String name) {
-        this.name = name;
-        this.getNumberOfNodesEvaluated =0;
-    }
 
-
-
-
+    String name;
+    int numOfEvaluatedNodes;
 
     @Override
     public String getName() {
@@ -21,6 +14,21 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
 
     @Override
     public int getNumberOfNodesEvaluated() {
-        return getNumberOfNodesEvaluated;
+        return numOfEvaluatedNodes;
+    }
+
+    public Solution getSolutionPath(AState goalState, AState startState)
+    {
+        Solution route = new Solution();
+        AState current = goalState;
+
+        while (!current.equals(startState))
+        {
+            current = current.getMyFather();
+            route.addStateToSolution(current);
+            if(current == null){return null;}
+        }
+        route.addStateToSolution(startState);
+        return route;
     }
 }

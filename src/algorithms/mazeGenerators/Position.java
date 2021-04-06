@@ -8,6 +8,12 @@ public class Position {
         this.row = row;
         this.col = col;
     }
+
+    public Position(Position pos) {
+        row = pos.row;
+        col = pos.col;
+    }
+
     public int getRowIndex()
     {
         return this.row;
@@ -15,6 +21,14 @@ public class Position {
     public int getColumnIndex()
     {
         return this.col;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean a = ((Position)obj).getRowIndex() == row;
+        boolean b = ((Position)obj).getColumnIndex()== col;
+        if (a&&b){return true;}
+        return false;
     }
 
     @Override

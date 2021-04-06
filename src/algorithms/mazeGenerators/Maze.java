@@ -16,6 +16,7 @@ public class Maze {
     public Maze(int rows, int cols) {
         this.rows = rows;
         this.cols = cols;
+        grid = new int[rows][cols];
     }
 
     public void setStart(Position start) {
@@ -52,6 +53,13 @@ public class Maze {
         return grid;
     }
 
+    public boolean getCell(Position p){
+        int row = p.getRowIndex();
+        int col = p.getColumnIndex();
+        if (grid[row][col]==0){return false;}
+        return true;
+    }
+
     public void setCell(Position p, int n)
     {
         int row = p.getRowIndex();
@@ -84,7 +92,7 @@ public class Maze {
         int pRow = p.getRowIndex();
         int pCol = p.getColumnIndex();
 
-        if (pRow < 0 || pCol < 0 || pRow > rows || pCol > cols){return false;}
+        if (pRow < 0 || pCol < 0 || pRow >= rows || pCol >= cols){return false;}
         if (isWall(p)){return false;}
         return true;
     }
@@ -112,29 +120,28 @@ public class Maze {
         return false;
     }
 
-    void Print()
+    public void Print()
     {
-        toString();
+        System.out.print(toString());
     }
 
     @Override
     public String toString() {
+        StringBuffer s = new StringBuffer();
         for (int i = 0; i < rows; i++) {
+            s.append("{");
             for (int j = 0; j < cols; j++) {
-                Position pos = new Position(i,j);
-                if (isStart(pos)) { System.out.print('S'); }
-                else if (isEnd(pos)) { System.out.print('E'); }
-                else if (isWall(pos)) {System.out.print('1'); }
-                else if (!isWall(pos)) {System.out.print('0'); }
-//                if (isWall(pos)) {System.out.print('█'); }
-//                if (!isWall(pos)) {System.out.print('░'); }
-                //MAZE
-
+                Position pos = new Position(i, j);
+                if (isWall(pos)) { s.append(" 1 "); }
+                else if (isStart(pos)) { s.append(" S "); }
+                else if (isEnd(pos)) { s.append(" E "); }
+                else if (!isWall(pos)) { s.append(" 0 "); }
             }
-            System.out.println();
+            s.append("}\n");
         }
+
         // █ ░ - symbols for empty and full cells, maybe we used it in future
-        return null;
+        return s.toString();
 
     }
 }

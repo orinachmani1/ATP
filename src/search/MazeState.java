@@ -11,7 +11,8 @@ public class MazeState extends AState {
     }
 
     public MazeState(Position pos){
-        curPosition = pos;
+        super(pos.toString());
+        curPosition =new Position(pos);
     }
 
     public Position getCurPosition() {
@@ -20,5 +21,17 @@ public class MazeState extends AState {
 
     public void setCurPosition(Position curPosition) {
         this.curPosition = curPosition;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){return false;}
+        if (!(obj instanceof MazeState)){return false;}
+        return ((MazeState)obj).curPosition.equals(curPosition);
+    }
+
+    @Override
+    public String toString() {
+        return curPosition.toString();
     }
 }
