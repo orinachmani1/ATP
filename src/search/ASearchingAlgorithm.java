@@ -3,10 +3,16 @@ package search;
 import java.util.HashSet;
 
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
+    protected  String name;
+    int getNumberOfNodesEvaluated;
+    public ASearchingAlgorithm(String name) {
+        this.name = name;
+        this.getNumberOfNodesEvaluated =0;
+    }
 
-    String name;
-    int numOfEvaluatedNodes;
-    //HashSet<AState>;
+
+
+
 
     @Override
     public String getName() {
@@ -15,6 +21,6 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
 
     @Override
     public int getNumberOfNodesEvaluated() {
-        return numOfEvaluatedNodes;
+        return getNumberOfNodesEvaluated;
     }
 }
