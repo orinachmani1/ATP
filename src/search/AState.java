@@ -40,4 +40,7 @@ public abstract class AState {
     public void setCost(double cost) {
         this.cost = cost;
     }
+
+    @Override
+    public abstract boolean equals(Object other);
 }

@@ -6,7 +6,6 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
 
     String name;
     int numOfEvaluatedNodes;
-    //HashSet<AState>;
 
     @Override
     public String getName() {
@@ -16,5 +15,20 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
     @Override
     public int getNumberOfNodesEvaluated() {
         return numOfEvaluatedNodes;
+    }
+
+    public Solution getSolutionPath(AState goalState, AState startState)
+    {
+        Solution route = new Solution();
+        AState current = goalState;
+
+        while (!current.equals(startState))
+        {
+            current = current.getMyFather();
+            route.addStateToSolution(current);
+            if(current == null){return null;}
+        }
+        route.addStateToSolution(startState);
+        return route;
     }
 }

@@ -22,4 +22,16 @@ public class MazeState extends AState {
     public void setCurPosition(Position curPosition) {
         this.curPosition = curPosition;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null){return false;}
+        if (!(obj instanceof MazeState)){return false;}
+        return ((MazeState)obj).curPosition.equals(curPosition);
+    }
+
+    @Override
+    public String toString() {
+        return curPosition.toString();
+    }
 }

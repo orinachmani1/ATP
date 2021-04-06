@@ -24,6 +24,14 @@ public class Position {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        boolean a = ((Position)obj).getRowIndex() == row;
+        boolean b = ((Position)obj).getColumnIndex()== col;
+        if (a&&b){return true;}
+        return false;
+    }
+
+    @Override
     public String toString() {
         return "{" + row + "," + col + "}";
     }
