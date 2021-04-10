@@ -11,7 +11,7 @@ public class RunSearchOnMaze {
 
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(111, 111);
+        Maze maze = mg.generate(100, 100);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         System.out.println("start path:" + maze.getStartPosition());
         System.out.println("Goal path:" + maze.getGoalPosition());
