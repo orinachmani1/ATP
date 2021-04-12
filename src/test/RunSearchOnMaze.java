@@ -11,14 +11,15 @@ public class RunSearchOnMaze {
 
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(100, 100);
+        Maze maze = mg.generate(15, 15);
+        maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         System.out.println("start path:" + maze.getStartPosition());
         System.out.println("Goal path:" + maze.getGoalPosition());
 
         solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
-        //solveProblem(searchableMaze, new BestFirstSearch());
+        solveProblem(searchableMaze, new BestFirstSearch());
     }
 
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) {

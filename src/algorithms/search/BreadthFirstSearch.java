@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
-    //ArrayList<AState> statesArray; //Collecting the list of nodes we currently work on
-    ArrayList<AState> visitedArray; //Visited nodes
+    ArrayList<AState> statesArray;
+    HashSet <String> visited;
+    double totalCost;
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
@@ -16,31 +17,21 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         AState start = problemToSolve.getStartState();
         AState goal = problemToSolve.getGoalState();
 
-        ArrayList<AState> statesArray = new ArrayList<>();
-        HashSet<String> visited = new HashSet<>();
-
-        //AState currentState;//Pointer ro a Astate object
-        statesArray.add(start);//Starting from start position
+        this.statesArray = new ArrayList<>();
+        this.visited = new HashSet<>();
+        statesArray.add(start);
         boolean solved = false;
 
         while (statesArray.size() > 0 && !solved) {
-            AState currentState = statesArray.get(0);//Taking the first object
+            AState currentState = statesArray.remove(0);
             if (!visited.contains(currentState.toString())) {
                 visited.add(currentState.toString());
                 numOfEvaluatedNodes++;
                 if (!goal.equals(currentState)) {
                     ArrayList<AState> neighbors = problemToSolve.getAllPossibleStates(currentState);
-                    if (!(neighbors == null)) {
-                        for (AState state : neighbors) {
-                            if (!visited.contains(state.toString())) {
-                                state.setMyFather(currentState);
-                                statesArray.add(state);
-                                //numOfEvaluatedNodes++;
-                            }
-                        }
-                    }
-                    statesArray.remove(0);
-                } else {
+                    addNeighborsToOpenList(neighbors,currentState);
+                }
+                else {
                     goal.setMyFather(currentState);
                     solved = true;
                 }
@@ -49,28 +40,21 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         return getSolutionPath(goal, start);
 
     }
+
+    //update father + add to open list
+    public void addNeighborsToOpenList(ArrayList<AState> neighbors, AState currentState) {
+        if (!(neighbors == null)) {
+            for (AState state : neighbors) {
+                if (!visited.contains(state.toString())) {
+                    if(this.getName().equals("BestFirstSearch"))
+                    {
+                        totalCost = state.getCost() + currentState.getCost();
+                        state.setCost(totalCost);
+                    }
+                    state.setMyFather(currentState);
+                    statesArray.add(state);
+                }
+            }
+        }
+    }
 }
-
-
-//            visited.add(currentState.toString());//Adding the tested node to our visited list
-//            this.numOfEvaluatedNodes++; //Increasing the number of the nodes we visited
-//            if(currentState.equals(problemToSolve.getGoalState())) {
-//                break;
-//            }
-//            ArrayList<AState> possible;//Define our possible list
-//            possible=problemToSolve.getAllPossibleStates(currentState);//Getting possible nodes
-//            for(int j =0;j<possible.size();j++) //Running of possible nodes
-//            {
-//                if(!visited.contains(possible.get(j).toString())) {
-//                    // if (!statesArray.contains(possible.get(j))) {//If we didn't visit this node
-//                    {
-//                        statesArray.add(possible.get(j)); //Collecting the relevant nodes
-//                        possible.get(j).setMyFather(currentState);//Creating the relationship between the node and his father
-//                    }
-//                    //   }
-//                }
-//            }
-//            statesArray.remove(0); //Deleting the head of the list
-//        }
-
-

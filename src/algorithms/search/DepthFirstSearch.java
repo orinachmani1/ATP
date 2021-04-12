@@ -7,6 +7,8 @@ import java.util.Stack;
 //based on https://www.youtube.com/watch?v=8UM1HziG3hw
 
 public class DepthFirstSearch extends ASearchingAlgorithm {
+    HashSet<String> visited;
+    Stack<AState> stack;
 
     public DepthFirstSearch() {
         name = "DeptFirstSearch";
@@ -17,17 +19,18 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
 
         if(problemToSolve==null){return null;}
 
-        HashSet<String> visited = new HashSet<>();
-        Stack<AState> stack = new Stack<>();
-        AState start = problemToSolve.getStartState();
-        stack.push(start);
+        this.visited = new HashSet<>();
+        this.stack = new Stack<>();
 
+        AState start = problemToSolve.getStartState();
         AState goal = problemToSolve.getGoalState();
+        stack.push(start);
 
         boolean solved=false;
         while (!stack.isEmpty()&& !solved)
         {
             AState cur = stack.pop();
+            System.out.print(cur.toString());//tmp
             if(cur==null){break;}
             if (!(visited.contains(cur.toString())))
             {
@@ -36,16 +39,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                 if (!goal.equals(cur))
                 {
                     ArrayList<AState> neighbors = problemToSolve.getAllPossibleStates(cur);
-                    if (!(neighbors == null))
-                    {
-                        for (AState state: neighbors) {
-                            if (!visited.contains(state.toString()))
-                            {
-                                state.setMyFather(cur);
-                                stack.push(state);
-                            }
-                        }
-                    }
+                    addNeighborsToOpenList(neighbors,cur);
                 }
                 else
                     {
@@ -57,4 +51,18 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         }
         return getSolutionPath(goal,start);
     }
+    
+    public void addNeighborsToOpenList(ArrayList<AState> neighbors, AState currentState){
+        if (!(neighbors == null))
+        {
+            for (AState state: neighbors) {
+                if (!visited.contains(state.toString()))
+                {
+                    state.setMyFather(currentState);
+                    stack.push(state);
+                }
+            }
+        }
+    }
 }
+
