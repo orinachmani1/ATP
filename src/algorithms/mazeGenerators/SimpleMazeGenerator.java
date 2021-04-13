@@ -19,7 +19,7 @@ public class SimpleMazeGenerator extends AMazeGenerator
             for (int j =0;j<cols;j++){
                 if (j==0&&i==0)
                     continue;
-              if ( j==endPos.getRowIndex() || i==startPos.getColumnIndex() ){  simplemaze[i][j]=0; }
+              if ( i==endPos.getRowIndex() || j==startPos.getColumnIndex() ){  simplemaze[i][j]=0; }
               else {
                   if(randomNum.nextInt(100)>50){simplemaze[i][j]=1; }
                   else simplemaze[i][j]=0;

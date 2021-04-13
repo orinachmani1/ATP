@@ -31,7 +31,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         while (!stack.isEmpty()&& !solved)
         {
             AState cur = stack.pop();
-            //System.out.print(cur.toString());//tmp
+            System.out.print(cur.toString());//tmp
             if(cur==null){break;}
             if (!(visited.contains(cur.toString())))
             {

@@ -21,6 +21,13 @@ public class MyMazeGenerator extends AMazeGenerator{
 
         int startR = random.nextInt(rows);
         int startC = 0;
+
+        int endR = random.nextInt(rows)+1;
+        int endC= cols-1;
+
+        Position goal = new Position(endR,endC);
+
+        maze.setEnd(goal);
         //int startC = random.nextInt(cols);
         Position curPosition = new Position(startR,startC);
         maze.setStart(curPosition);
@@ -41,7 +48,8 @@ public class MyMazeGenerator extends AMazeGenerator{
                     curPosition = redNodes.remove(0);
                 }
         }
-        maze.setEnd(curPosition);
+
+        //maze.setEnd(curPosition);
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols ; j++) {
@@ -53,18 +61,36 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
 
-        /*while (maze.getGoalPosition() == null)
-        {
-            int endR = random.nextInt(rows);
-            int endC = cols-1;
-            if(endR == startR || endC == startC){continue;}
-            Position p = new Position(endR,endC);
-            if (!getVisited(p))
-            {
-                maze.setEnd(p);
+        /*boolean flag = false;
+        for (int i = 0; i < cols-1 && !flag; i++) {
+            for (int j = 0 ; j < rows-1 && !flag ; j++) {
+                Position p = new Position(i,j);
+                if(getVisited(p) && !maze.isStart(p) && onFrame(p,maze))
+                {
+                    maze.setEnd(p);
+                    break;
+                }
+                if (i==1& j==1){maze.setEnd(curPosition);}
             }
         }*/
+        maze.setCell(goal,0);
+        Position p = new Position(goal.getRowIndex()-1,goal.getColumnIndex());
+        maze.setCell(p,0);
         return maze;
+    }
+
+    public boolean onFrame(Position p,Maze m) {
+        int row = p.getRowIndex();
+        int col = p.getColumnIndex();
+
+        int mazeRows = m.getRows();
+        int mazeCols = m.getCols();
+
+        if (col == mazeCols-1 || row == mazeRows-1 ){
+            if (col != 0 && col > (2*mazeCols/3) /*&& row!=m.getStartPosition().getRowIndex()*/){return true;}
+        }
+        return false;
+
     }
 
     public void goFromCurrrentToRed(Position curPosition, Position next)
