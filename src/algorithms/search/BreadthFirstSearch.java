@@ -18,7 +18,6 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
         AState start = problemToSolve.getStartState();
         AState goal = problemToSolve.getGoalState();
-        //goal.toString();
 
         this.visited = new HashSet<>();
         statesArray.add(start);
@@ -26,7 +25,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
 
         while (statesArray.size() > 0 && !solved) {
             AState currentState = statesArray.poll();
-            System.out.print(currentState.toString());//tmp
+            //System.out.print(currentState.toString());//tmp
             if (!visited.contains(currentState.toString())) {
                 visited.add(currentState.toString());
                 numOfEvaluatedNodes++;

@@ -22,7 +22,7 @@ public class MyMazeGenerator extends AMazeGenerator{
         int startR = random.nextInt(rows);
         int startC = 0;
 
-        int endR = random.nextInt(rows)+1;
+        int endR = random.nextInt(rows-1)+1;
         int endC= cols-1;
 
         Position goal = new Position(endR,endC);
