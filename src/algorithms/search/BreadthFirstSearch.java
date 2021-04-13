@@ -2,10 +2,12 @@ package algorithms.search;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Queue;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
     //ArrayList<AState> statesArray; //Collecting the list of nodes we currently work on
     ArrayList<AState> visitedArray; //Visited nodes
+
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
@@ -29,7 +31,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
                 visited.add(currentState.toString());
                 numOfEvaluatedNodes++;
                 if (!goal.equals(currentState)) {
-                    ArrayList<AState> neighbors = problemToSolve.getAllPossibleStates(currentState);
+                    ArrayList<AState> neighbors = problemToSolve.getAllSuccessors(currentState);
                     if (!(neighbors == null)) {
                         for (AState state : neighbors) {
                             if (!visited.contains(state.toString())) {

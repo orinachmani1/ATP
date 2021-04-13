@@ -1,8 +1,18 @@
 package algorithms.search;
 
-public class BestFirstSearch extends ASearchingAlgorithm {
+import java.util.PriorityQueue;
+
+public class BestFirstSearch extends BreadthFirstSearch {
 
     @Override
+    public BestFirstSearch() {
+        name = "BestFirstSearch";
+
+      //  pq.addAll( this.visitedArray);
+
+
+
+    }
     public Solution solve(ISearchable problemToSolve) {
         return null;
     }
