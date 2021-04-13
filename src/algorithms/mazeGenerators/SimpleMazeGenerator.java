@@ -1,5 +1,7 @@
 package algorithms.mazeGenerators;
 
+import org.junit.jupiter.api.DynamicTest;
+
 import java.util.Random;
 
 public class SimpleMazeGenerator extends AMazeGenerator
