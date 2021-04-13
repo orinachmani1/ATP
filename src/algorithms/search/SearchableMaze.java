@@ -32,19 +32,78 @@ public class SearchableMaze implements ISearchable {
         return goal;
     }
 
-    @Override
+    /*@Override
     public ArrayList<AState> getAllPossibleStates(AState s) {
 
         Position curPos = ((MazeState)s).getCurPosition();
         ArrayList<Position> validMoves = maze.validMoves(curPos);
         if (validMoves.isEmpty()){return null;}
 
+//        int row = curPos.getRowIndex();
+//        int col = curPos.getColumnIndex();
+//        String up = "{" + (row - 1) +"," + col +"}" ;
+//        String down = "{" + (row + 1) +"," + col +"}" ;
+//        String right = "{" + (row - 1) +"," + col +"}" ;
+//        String left = "{" + (row - 1) +"," + col +"}" ;
+//        Position up = new Position(pRow-1, pCol);
+//        Position down = new Position(pRow+1, pCol);
+//        Position right = new Position(pRow, pCol+1);
+//        Position left = new Position(pRow, pCol-1);
+
         ArrayList<AState> PossibleStates = new ArrayList<AState>();
         for (Position vm : validMoves) {
-            AState state = new MazeState(vm);//legal casting??
+            AState state = new MazeState(vm,10,s);
             PossibleStates.add(state);
         }
 
+
         return PossibleStates;
+    }*/
+
+    public ArrayList<AState> getAllPossibleStates(AState s)
+    {
+        Position curPos = ((MazeState) s).getCurPosition();
+        ArrayList<AState> possibleStates = new ArrayList<AState>();
+
+        int pRow = curPos.getRowIndex();
+        int pCol = curPos.getColumnIndex();
+
+        //Regular steps = costs 10
+        Position up = new Position(pRow - 1, pCol);
+        Position down = new Position(pRow + 1, pCol);
+        Position right = new Position(pRow, pCol + 1);
+        Position left = new Position(pRow, pCol - 1);
+        //Diagonals steps = costs 15
+        Position upRight = new Position(pRow - 1, pCol + 1);
+        Position upLeft = new Position(pRow - 1, pCol - 1);
+        Position downRight = new Position(pRow + 1, pCol + 1);
+        Position downLeft = new Position(pRow + 1, pCol - 1);
+
+        if (maze.isValidMove(up)) {
+            possibleStates.add(new MazeState(up, 10, s));
+            if (maze.isValidMove(upRight)) { possibleStates.add(new MazeState(upRight, 15, s)); }
+            if (maze.isValidMove(upLeft)) { possibleStates.add(new MazeState(upLeft, 15, s)); }
+        }
+
+        if (maze.isValidMove(down)) {
+            possibleStates.add(new MazeState(down, 10, s));
+            if (maze.isValidMove(downRight)) { possibleStates.add(new MazeState(downRight, 15, s)); }
+            if (maze.isValidMove(downLeft)) { possibleStates.add(new MazeState(downLeft, 15, s)); }
+        }
+
+        if (maze.isValidMove(right)) {
+            possibleStates.add(new MazeState(right, 10, s));
+            if (maze.isValidMove(upRight)) { possibleStates.add(new MazeState(upRight, 15, s)); }
+            if (maze.isValidMove(downLeft)) { possibleStates.add(new MazeState(downLeft, 15, s)); }
+        }
+
+        if (maze.isValidMove(left)) {
+            possibleStates.add(new MazeState(left, 10, s));
+            if (maze.isValidMove(upLeft)) { possibleStates.add(new MazeState(upLeft, 15, s)); }
+            if (maze.isValidMove(downLeft)) { possibleStates.add(new MazeState(downLeft, 15, s)); }
+        }
+
+        return possibleStates;
     }
 }
+

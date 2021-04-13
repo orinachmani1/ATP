@@ -25,12 +25,13 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         AState start = problemToSolve.getStartState();
         AState goal = problemToSolve.getGoalState();
         stack.push(start);
+        //visited.add(start.toString());
 
         boolean solved=false;
         while (!stack.isEmpty()&& !solved)
         {
             AState cur = stack.pop();
-            System.out.print(cur.toString());//tmp
+            //System.out.print(cur.toString());//tmp
             if(cur==null){break;}
             if (!(visited.contains(cur.toString())))
             {
@@ -51,7 +52,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         }
         return getSolutionPath(goal,start);
     }
-    
+
     public void addNeighborsToOpenList(ArrayList<AState> neighbors, AState currentState){
         if (!(neighbors == null))
         {

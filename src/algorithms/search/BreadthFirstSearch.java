@@ -2,14 +2,16 @@ package algorithms.search;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
-    ArrayList<AState> statesArray;
+    LinkedList<AState> statesArray;
     HashSet <String> visited;
     double totalCost;
 
     public BreadthFirstSearch() {
         name = "BreadthFirstSearch";
+        this.statesArray = new LinkedList<>();
     }
 
     public Solution solve(ISearchable problemToSolve) {
@@ -17,13 +19,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         AState start = problemToSolve.getStartState();
         AState goal = problemToSolve.getGoalState();
 
-        this.statesArray = new ArrayList<>();
         this.visited = new HashSet<>();
         statesArray.add(start);
         boolean solved = false;
 
         while (statesArray.size() > 0 && !solved) {
-            AState currentState = statesArray.remove(0);
+            AState currentState = statesArray.poll();
+            //System.out.print(currentState.toString());//tmp
             if (!visited.contains(currentState.toString())) {
                 visited.add(currentState.toString());
                 numOfEvaluatedNodes++;

@@ -1,10 +1,9 @@
 package algorithms.search;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-class comperator implements Comparator<AState>
+class comparator implements Comparator<AState>
 {
     public int compare(AState a, AState b)
     {
@@ -19,7 +18,7 @@ public class BestFirstSearch extends BreadthFirstSearch {
 
     public BestFirstSearch() {
         name = "BestFirstSearch";
-        this.statesArray = new PriorityQueue<AState>(new comperator());
+        this.statesArray = new PriorityQueue<AState>(new comparator());
     }
 
 }
