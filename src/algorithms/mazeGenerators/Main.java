@@ -11,7 +11,7 @@ public class Main {
 
         IMazeGenerator my = new MyMazeGenerator();*/
         IMazeGenerator mg = new MyMazeGenerator();
-        Maze maze = mg.generate(8, 8);
+        Maze maze = mg.generate(21, 21);
         maze.print();
         //System.out.print(mg.toString());
 

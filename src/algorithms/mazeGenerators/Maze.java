@@ -45,7 +45,7 @@ public class Maze {
 
     public Position getGoalPosition()
     {
-        return end;
+        return this.end;
     }
 
     public int[][] getGrid() {
@@ -146,6 +146,10 @@ public class Maze {
     public void print()
     {
         System.out.print(toString());
+        if(this.end == null)
+        {
+
+        }
     }
 
     @Override
@@ -155,10 +159,10 @@ public class Maze {
             s.append("{");
             for (int j = 0; j < cols; j++) {
                 Position pos = new Position(i, j);
-                if (isWall(pos)) { s.append(" 1 "); }
+                if (isEnd(pos)) { s.append(" E "); }
+                else if (isWall(pos)) { s.append(" █ "); }
                 else if (isStart(pos)) { s.append(" S "); }
-                else if (isEnd(pos)) { s.append(" E "); }
-                else if (!isWall(pos)) { s.append(" 0 "); }
+                else if (!isWall(pos)) { s.append(" ░ "); }
             }
             s.append("}\n");
         }

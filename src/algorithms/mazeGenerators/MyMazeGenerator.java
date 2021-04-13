@@ -41,7 +41,8 @@ public class MyMazeGenerator extends AMazeGenerator{
                     curPosition = redNodes.remove(0);
                 }
         }
-        maze.setEnd(curPosition);
+
+        //maze.setEnd(curPosition);
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols ; j++) {
@@ -53,18 +54,35 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
 
-        /*while (maze.getGoalPosition() == null)
-        {
-            int endR = random.nextInt(rows);
-            int endC = cols-1;
-            if(endR == startR || endC == startC){continue;}
-            Position p = new Position(endR,endC);
-            if (!getVisited(p))
-            {
-                maze.setEnd(p);
+        boolean flag = false;
+        for (int i = 0; i < cols && !flag; i++) {
+            for (int j = 0 ; j < rows && !flag ; j++) {
+                Position p = new Position(i,j);
+                if(getVisited(p) && !maze.isStart(p) && onFrame(p,maze))
+                {
+                    maze.setEnd(p);
+                    break;
+                }
+                if (i==1& j==1){maze.setEnd(curPosition);}
             }
-        }*/
+        }
+
+
         return maze;
+    }
+
+    public boolean onFrame(Position p,Maze m) {
+        int row = p.getRowIndex();
+        int col = p.getColumnIndex();
+
+        int mazeRows = m.getRows();
+        int mazeCols = m.getCols();
+
+        if (col == mazeCols-1 || row == mazeRows-1 ){
+            if (col != 0 && col > (2*mazeCols/3) /*&& row!=m.getStartPosition().getRowIndex()*/){return true;}
+        }
+        return false;
+
     }
 
     public void goFromCurrrentToRed(Position curPosition, Position next)
