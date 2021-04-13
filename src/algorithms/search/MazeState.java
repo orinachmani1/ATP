@@ -15,6 +15,20 @@ public class MazeState extends AState {
         curPosition =new Position(pos);
     }
 
+    public MazeState(int row, int col, double cost, AState father){
+        this.curPosition = new Position(row,col);
+        this.stateName = curPosition.toString();
+        this.setCost(cost);
+        this.setMyFather(father);
+    }
+
+    public MazeState(Position pos, double cost, AState father){
+        this.curPosition = new Position(pos);
+        this.stateName = curPosition.toString();
+        this.setCost(cost);
+        this.setMyFather(father);
+    }
+
     public Position getCurPosition() {
         return curPosition;
     }

@@ -1,19 +1,24 @@
 package algorithms.search;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
+class comparator implements Comparator<AState>
+{
+    public int compare(AState a, AState b)
+    {
+        int aCost = (int) a.getCost();
+        int bCost = (int)b.getCost();
+        int res = (aCost- bCost);
+        return res;
+    }
+}
 public class BestFirstSearch extends BreadthFirstSearch {
+    private PriorityQueue<AState> statesArray;
 
-    @Override
     public BestFirstSearch() {
         name = "BestFirstSearch";
-
-      //  pq.addAll( this.visitedArray);
-
-
-
+        this.statesArray = new PriorityQueue<AState>(new comparator());
     }
-    public Solution solve(ISearchable problemToSolve) {
-        return null;
-    }
+
 }

@@ -26,7 +26,6 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
             route.addStateToSolution(current);
             if(current == null){return null;}
         }
-        route.addStateToSolution(startState);
         return route;
     }
 }

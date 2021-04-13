@@ -12,13 +12,14 @@ public class RunSearchOnMaze {
     public static void main(String[] args) {
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(100, 100);
+        maze.print();
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         System.out.println("start path:" + maze.getStartPosition());
         System.out.println("Goal path:" + maze.getGoalPosition());
 
         solveProblem(searchableMaze, new BreadthFirstSearch());
         solveProblem(searchableMaze, new DepthFirstSearch());
-        //solveProblem(searchableMaze, new BestFirstSearch());
+        solveProblem(searchableMaze, new BestFirstSearch());
     }
 
     private static void solveProblem(ISearchable domain, ISearchingAlgorithm searcher) {
@@ -30,7 +31,10 @@ public class RunSearchOnMaze {
         System.out.println("Solution path:");
         ArrayList<AState> solutionPath = solution.getSolutionPath();
         for (int i = 0; i < solutionPath.size(); i++) {
-            System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
+            //System.out.println(String.format("%s. %s",i,solutionPath.get(i)));
+            //System.out.print(String.format("%s. %s",i,solutionPath.get(i)));
         }
+        System.out.print(solutionPath.size());
+        System.out.println();
     }
 }
