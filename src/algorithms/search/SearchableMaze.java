@@ -32,34 +32,7 @@ public class SearchableMaze implements ISearchable {
         return goal;
     }
 
-    /*@Override
-    public ArrayList<AState> getAllPossibleStates(AState s) {
-
-        Position curPos = ((MazeState)s).getCurPosition();
-        ArrayList<Position> validMoves = maze.validMoves(curPos);
-        if (validMoves.isEmpty()){return null;}
-
-//        int row = curPos.getRowIndex();
-//        int col = curPos.getColumnIndex();
-//        String up = "{" + (row - 1) +"," + col +"}" ;
-//        String down = "{" + (row + 1) +"," + col +"}" ;
-//        String right = "{" + (row - 1) +"," + col +"}" ;
-//        String left = "{" + (row - 1) +"," + col +"}" ;
-//        Position up = new Position(pRow-1, pCol);
-//        Position down = new Position(pRow+1, pCol);
-//        Position right = new Position(pRow, pCol+1);
-//        Position left = new Position(pRow, pCol-1);
-
-        ArrayList<AState> PossibleStates = new ArrayList<AState>();
-        for (Position vm : validMoves) {
-            AState state = new MazeState(vm,10,s);
-            PossibleStates.add(state);
-        }
-
-
-        return PossibleStates;
-    }*/
-
+    @Override
     public ArrayList<AState> getAllPossibleStates(AState s)
     {
         Position curPos = ((MazeState) s).getCurPosition();

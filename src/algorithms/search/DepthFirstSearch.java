@@ -25,7 +25,6 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
         AState start = problemToSolve.getStartState();
         AState goal = problemToSolve.getGoalState();
         stack.push(start);
-        //visited.add(start.toString());
 
         boolean solved=false;
         while (!stack.isEmpty()&& !solved)

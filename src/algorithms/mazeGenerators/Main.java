@@ -7,9 +7,8 @@ public class Main {
     public static void main(String[] args) {
         /*EmptyMazeGenerator m = new EmptyMazeGenerator();
         Maze tmp = m.generate(4,3);
-        tmp.toString();
+        tmp.toString();*/
 
-        IMazeGenerator my = new MyMazeGenerator();*/
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(21, 21);
         maze.print();
@@ -22,9 +21,6 @@ public class Main {
         ASearchingAlgorithm DFS = new DepthFirstSearch();
         Solution solution2 = DFS.solve(searchableMaze);
         //ArrayList<AState> solutionPath = dfs;
-
-        //Searchable i = ((ISearchable) tmpMy);
-        //d.solve(tmpMy);
 
         System.out.print("bye bye");
 

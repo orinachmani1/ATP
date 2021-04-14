@@ -66,50 +66,6 @@ public class Maze {
         grid[row][col] = n;
     }
 
-//    public ArrayList<Position> validMoves(Position p)
-//    {
-//        ArrayList posList= new ArrayList<Position>();
-//
-//        int pRow = p.getRowIndex();
-//        int pCol = p.getColumnIndex();
-//
-//        //Regular steps
-//        Position up = new Position(pRow-1, pCol);
-//        Position down = new Position(pRow+1, pCol);
-//        Position right = new Position(pRow, pCol+1);
-//        Position left = new Position(pRow, pCol-1);
-//
-//        /*//Diagonal
-//        Position upRight = new Position(pRow-1, pCol+1);
-//        Position upLeft = new Position(pRow-1, pCol-1);
-//        Position downRight = new Position(pRow+1, pCol+1);
-//        Position downLeft = new Position(pRow+1, pCol-1);*/
-//
-//        if(isValidMove(up)){
-//            posList.add(up);
-//            /*if(isValidMove(upRight)){posList.add(upRight);}
-//            if(isValidMove(upLeft)){posList.add(upLeft);}*/
-//        }
-//        if(isValidMove(down))
-//        {
-//            posList.add(down);
-//            /*if(isValidMove(downRight)){posList.add(downRight);}
-//            if(isValidMove(downLeft)){posList.add(downLeft);}*/
-//        }
-//        if(isValidMove(right)){
-//            posList.add(right);
-//            /*if(isValidMove(upRight)){posList.add(upRight);}
-//            if(isValidMove(downRight)){posList.add(downRight);}*/
-//        }
-//        if(isValidMove(left)){
-//            posList.add(left);
-//            /*if(isValidMove(upLeft)){posList.add(upLeft);}
-//            if(isValidMove(downLeft)){posList.add(downLeft);}*/
-//        }
-//
-//        return posList;
-//    }
-
     public boolean isValidMove(Position p)
     {
         int pRow = p.getRowIndex();
@@ -146,10 +102,6 @@ public class Maze {
     public void print()
     {
         System.out.print(toString());
-        if(this.end == null)
-        {
-
-        }
     }
 
     @Override

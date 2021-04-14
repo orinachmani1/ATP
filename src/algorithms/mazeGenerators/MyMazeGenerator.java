@@ -28,7 +28,6 @@ public class MyMazeGenerator extends AMazeGenerator{
         Position goal = new Position(endR,endC);
 
         maze.setEnd(goal);
-        //int startC = random.nextInt(cols);
         Position curPosition = new Position(startR,startC);
         maze.setStart(curPosition);
         maze.setCell(curPosition, 0);
@@ -49,8 +48,6 @@ public class MyMazeGenerator extends AMazeGenerator{
                 }
         }
 
-        //maze.setEnd(curPosition);
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols ; j++) {
                 Position p = new Position(i,j);
@@ -61,18 +58,6 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
 
-        /*boolean flag = false;
-        for (int i = 0; i < cols-1 && !flag; i++) {
-            for (int j = 0 ; j < rows-1 && !flag ; j++) {
-                Position p = new Position(i,j);
-                if(getVisited(p) && !maze.isStart(p) && onFrame(p,maze))
-                {
-                    maze.setEnd(p);
-                    break;
-                }
-                if (i==1& j==1){maze.setEnd(curPosition);}
-            }
-        }*/
         maze.setCell(goal,0);
         Position p = new Position(goal.getRowIndex()-1,goal.getColumnIndex());
         maze.setCell(p,0);
