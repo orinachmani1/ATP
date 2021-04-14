@@ -12,7 +12,7 @@ public class Maze3DState extends AState {
         curPosition = new Position3D(pos);
     }
 
-    public Maze3DState(Position3D pos, double cost, AState father){
+    public Maze3DState(Position3D pos, AState father){
         this.curPosition = new Position3D(pos);
         setStateName(curPosition.toString());
         this.setMyFather(father);
