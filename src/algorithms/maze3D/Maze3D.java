@@ -96,7 +96,7 @@ public class Maze3D {
     public String toString() {
         StringBuffer s = new StringBuffer();
         for (int i = 0; i < depth; i++) {
-            s.append("{");
+            s.append("{\n");
             for (int j = 0; j < rows; j++) {
                 s.append("{");
                 for (int k = 0; k < cols ; k++) {
@@ -108,7 +108,7 @@ public class Maze3D {
                 }
                 s.append("}\n");
             }
-            s.append("}\n");
+            s.append("}\n\n");
         }
 
         // █ ░ - symbols for empty and full cells, maybe we used it in future
