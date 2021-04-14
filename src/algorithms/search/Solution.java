@@ -27,16 +27,4 @@ public class Solution {
         return solution.contains(state);
     }
 
-
-
-    /*private ArrayList<AState> solutionPath;
-    public Solution(AState state){
-        this.solutionPath=new ArrayList<>();
-        while(state!=null){
-            this.solutionPath.add(0,state);
-            state=state.getMyFather();
-        }
-    }*/
-
-
 }
