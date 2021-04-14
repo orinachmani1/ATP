@@ -6,13 +6,9 @@ public class MazeState extends AState {
 
     Position curPosition;
 
-    public MazeState(){
-        curPosition = null;
-    }
-
     public MazeState(Position pos){
         super(pos.toString());
-        curPosition =new Position(pos);
+        curPosition = new Position(pos);
     }
 
     public MazeState(int row, int col, double cost, AState father){

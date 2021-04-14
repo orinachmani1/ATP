@@ -43,10 +43,7 @@ public class Maze {
         return start;
     }
 
-    public Position getGoalPosition()
-    {
-        return this.end;
-    }
+    public Position getGoalPosition() { return this.end; }
 
     public int[][] getGrid() {
         return grid;
