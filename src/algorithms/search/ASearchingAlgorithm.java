@@ -20,11 +20,12 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
         Solution route = new Solution();
         AState current = goalState;
 
-        while (!current.equals(startState))
+        //while (!current.toString().equals(startState.toString()))
+        while (current != null)
         {
             current = current.getMyFather();
+            if(current == null){return route;}
             route.addStateToSolution(current);
-            if(current == null){return null;}
         }
         return route;
     }

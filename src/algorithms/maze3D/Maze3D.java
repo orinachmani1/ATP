@@ -95,21 +95,22 @@ public class Maze3D {
     @Override
     public String toString() {
         StringBuffer s = new StringBuffer();
+        s.append("{\n");
         for (int i = 0; i < depth; i++) {
-            s.append("{\n");
             for (int j = 0; j < rows; j++) {
-                s.append("{");
+                s.append("{ ");
                 for (int k = 0; k < cols ; k++) {
                     Position3D pos = new Position3D(i,j,k);
-                    if (isEnd(pos)) { s.append(" E "); }
-                    else if (isWall(pos)) { s.append(" █ "); }
-                    else if (isStart(pos)) { s.append(" S "); }
-                    else if (!isWall(pos)) { s.append(" ░ "); }
+                    if (isEnd(pos)) { s.append("E "); }
+                    else if (isWall(pos)) { s.append("█ "); }
+                    else if (isStart(pos)) { s.append("S "); }
+                    else if (!isWall(pos)) { s.append("░ "); }
                 }
                 s.append("}\n");
             }
-            s.append("}\n\n");
+            s.append("-------------\n");
         }
+        s.append("}\n\n");
 
         // █ ░ - symbols for empty and full cells, maybe we used it in future
         return s.toString();

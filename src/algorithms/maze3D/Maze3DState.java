@@ -32,6 +32,6 @@ public class Maze3DState extends AState {
 
     @Override
     public String toString() {
-        return super.toString();
+        return curPosition.toString();
     }
 }

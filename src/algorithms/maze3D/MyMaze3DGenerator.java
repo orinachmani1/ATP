@@ -17,10 +17,12 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         redNodes = new ArrayList<Position3D>();
 
         int startD = 0;
-        int startR = random.nextInt(row);
+        //int startR = random.nextInt(row);
+        int startR = 0;
         int startC = 0;
 
-        int endD= column-1;
+        //int endD= depth-1;
+        int endD= random.nextInt(depth-1)+1;
         int endR = random.nextInt(row-1)+1;
         int endC= column-1;
 
@@ -38,7 +40,7 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
 
             if (next!=null)
             {
-                System.out.print(next.toString());//TODO - remove
+                //System.out.print(next.toString());//TODO - remove
                 goFromCurrrentToRed(curPosition,next);
                 curPosition = next;
             }
@@ -52,13 +54,17 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
             for (int j = 0; j < row; j++) {
                 for (int k = 0; k < column ; k++) {
                 Position3D p = new Position3D(i,j,k);
-                if(!getVisited(p)) { maze.setCell(p,1); }
+                if(!getVisited(p)) { maze.setCell(p,1);
+                //if( k==column-1 && k%5 == 1 ){ maze.setCell(p,0);}
+                }
             }
         }
 
         maze.setCell(goal,0);
         Position3D p = new Position3D(goal.getDepthIndex(),goal.getRowIndex()-1,goal.getColumnIndex());
         maze.setCell(p,0);
+        Position3D p2 = new Position3D(0,0,1);
+        maze.setCell(p2,0);
         return maze;
     }
 
