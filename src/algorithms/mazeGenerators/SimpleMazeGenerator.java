@@ -9,8 +9,10 @@ public class SimpleMazeGenerator extends AMazeGenerator
     public Maze generate(int rows, int cols) {
         int[][] simpleMaze = new int[rows][cols];
         Random randomNum = new Random();
-        Position startPos = new Position(0,randomNum.nextInt(cols-1));
-        Position endPos = new Position(randomNum.nextInt(rows-1),cols-1);
+        //Position startPos = new Position(0,randomNum.nextInt(cols-1));
+        Position startPos = new Position(0,0);
+        //Position endPos = new Position(randomNum.nextInt(rows-1),cols-1);
+        Position endPos = new Position(randomNum.nextInt(rows-1)+1,cols-1);
         simpleMaze[startPos.getRowIndex()][startPos.getColumnIndex()]=0;
         simpleMaze[endPos.getRowIndex()][endPos.getColumnIndex()]=0;
         for (int i =0;i<rows;i++){
