@@ -72,7 +72,7 @@ public class MyMazeGenerator extends AMazeGenerator{
         int mazeCols = m.getCols();
 
         if (col == mazeCols-1 || row == mazeRows-1 ){
-            if (col != 0 && col > (2*mazeCols/3) /*&& row!=m.getStartPosition().getRowIndex()*/){return true;}
+            if (col != 0 && col > (2*mazeCols/3) && row!=m.getStartPosition().getRowIndex()){return true;}
         }
         return false;
 

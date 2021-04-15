@@ -35,9 +35,10 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         while(redNodes.size() > 0)
         {
             Position3D next = getRandomRed(curPosition);
-            System.out.print(next.toString());
+
             if (next!=null)
             {
+                System.out.print(next.toString());//TODO - remove
                 goFromCurrrentToRed(curPosition,next);
                 curPosition = next;
             }
@@ -168,16 +169,16 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         //UP
         if ( curDep + 2 == nextDep && curRow == nextRow && curCol == nextCol ){ middle = new Position3D(curDep+1,curRow,curCol);}
         //DOWN
-        if ( curRow -2 == nextRow && curCol == nextCol ){ middle = new Position3D(curDep-1,curRow,curCol);}
+        if ( curDep - 2 == nextDep && curRow == nextRow && curCol == nextCol ){ middle = new Position3D(curDep-1,curRow,curCol);}
 
         //FORWARD
-        if ( curRow == nextRow && curRow - 2 == nextRow && curCol == nextCol ){ middle = new Position3D(curDep,curRow-1,curCol);}
+        if ( curDep == nextDep && curRow - 2 == nextRow && curCol == nextCol ){ middle = new Position3D(curDep,curRow-1,curCol);}
         //BACKWARD
-        if ( curRow == nextRow && curRow + 2 == nextRow && curCol == nextCol ){ middle = new Position3D(curDep,curRow+1,curCol);}
+        if ( curDep == nextDep && curRow + 2 == nextRow && curCol == nextCol ){ middle = new Position3D(curDep,curRow+1,curCol);}
         //RIGHT
-        if ( curRow == nextRow && curRow == nextRow && curCol + 2  == nextCol ){ middle = new Position3D(curDep, curRow,curCol+1);}
+        if ( curDep == nextDep && curRow == nextRow && curCol + 2  == nextCol ){ middle = new Position3D(curDep, curRow,curCol+1);}
         //LEFT
-        if ( curRow == nextRow && curRow == nextRow && curCol - 2 == nextCol ){ middle = new Position3D(curDep, curRow,curCol-1);}
+        if ( curDep == nextDep && curRow == nextRow && curCol - 2 == nextCol ){ middle = new Position3D(curDep, curRow,curCol-1);}
 
         setVisited(next);
         setVisited(middle);
