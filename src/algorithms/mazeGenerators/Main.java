@@ -8,7 +8,7 @@ public class Main {
         /*EmptyMazeGenerator m = new EmptyMazeGenerator();
         Maze tmp = m.generate(4,3);
         tmp.toString();*/
-
+        //createMaze();
         IMazeGenerator mg = new MyMazeGenerator();
         Maze maze = mg.generate(21, 21);
         maze.print();

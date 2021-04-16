@@ -19,7 +19,7 @@ public class MyMazeGenerator extends AMazeGenerator{
         visited = new boolean[rows][cols];
         redNodes = new ArrayList<Position>();
 
-        int startR = random.nextInt(rows);
+        int startR = 0;
         int startC = 0;
 
         int endR = random.nextInt(rows-1)+1;

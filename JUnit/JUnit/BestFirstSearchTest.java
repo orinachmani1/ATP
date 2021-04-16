@@ -45,12 +45,6 @@ public class BestFirstSearchTest {
 
     }
 
-   
-//    public void nullMazeNodes(){ // checking null maze
-//        bestFirstS.solve(null);
-//        Assertions.assertEquals(0,bestFirstS.getNumberOfNodesEvaluated());
-//    }
-
     @Test
     public void myMazeSolution() throws Exception{ //Testing empty maze solution by comparing between the end and start positions of the problem  to the solution positions
         createMaze();
@@ -89,8 +83,5 @@ public class BestFirstSearchTest {
     public void checkName() throws Exception{ //Testing the name
         Assertions.assertEquals("BestFirstSearch",bestFirstS.getName());
     }
-
-
-
 
 }

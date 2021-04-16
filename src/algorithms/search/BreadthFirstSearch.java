@@ -29,8 +29,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
             if (!visited.contains(currentState.toString())) {
                 visited.add(currentState.toString());
                 numOfEvaluatedNodes++;
-                if (!goal.equals(currentState)) {
-                    ArrayList<AState> neighbors = problemToSolve.getAllSuccessors(currentState);
+                if (!goal.toString().equals(currentState.toString())) {
+                    ArrayList<AState> neighbors = problemToSolve.getAllPossibleStates(currentState);
                     addNeighborsToOpenList(neighbors,currentState);
                 }
                 else {
