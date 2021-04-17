@@ -23,6 +23,7 @@ public class MyMazeGenerator extends AMazeGenerator{
         int startC = 0;
 
         int endR = random.nextInt(rows-1)+1;
+        //int endR = 1;
         int endC= cols-1;
 
         Position goal = new Position(endR,endC);
@@ -55,12 +56,21 @@ public class MyMazeGenerator extends AMazeGenerator{
                 {
                     maze.setCell(p,1);
                 }
+                if ((i==rows-1|| j==cols-1) && maze.getCell(p) ){
+                    int randomNum=random.nextInt(10);
+                    if (randomNum>9)
+                    {
+                        maze.setCell(p,0);
+                    }
+                }
             }
         }
 
         maze.setCell(goal,0);
         Position p = new Position(goal.getRowIndex()-1,goal.getColumnIndex());
         maze.setCell(p,0);
+        Position p2 = new Position(startC,startC+1);
+        maze.setCell(p2,0);
         return maze;
     }
 

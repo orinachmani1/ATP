@@ -38,7 +38,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
                 numOfEvaluatedNodes++;
                 if (!goal.equals(cur))
                 {
-                    ArrayList<AState> neighbors = problemToSolve.getAllPossibleStates(cur);
+                    ArrayList<AState> neighbors = problemToSolve.getAllSuccessors(cur);
                     addNeighborsToOpenList(neighbors,cur);
                 }
                 else

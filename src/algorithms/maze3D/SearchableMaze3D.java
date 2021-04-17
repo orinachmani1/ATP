@@ -37,8 +37,10 @@ public class SearchableMaze3D implements ISearchable {
         return goal;
     }
 
+
+
     @Override
-    public ArrayList<AState> getAllPossibleStates(AState s)
+    public ArrayList<AState> getAllSuccessors(AState s)
     {
         Position3D curPos = ((Maze3DState) s).getCurPosition();
         ArrayList<AState> possibleStates = new ArrayList<AState>();

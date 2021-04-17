@@ -1,7 +1,6 @@
 package test;
 
 import algorithms.maze3D.*;
-import algorithms.mazeGenerators.*;
 
 public class RunMaze3DGenerator {
     public static void main(String[] args) {
@@ -12,11 +11,11 @@ public class RunMaze3DGenerator {
         testMazeGenerator(new MyMaze3DGenerator());
     }
 
-    private static void testMazeGenerator(IMazeGenerator3D mazeGenerator) {
+    private static void testMazeGenerator(IMaze3DGenerator mazeGenerator) {
         // prints the time it takes the algorithm to run
         //System.out.println(String.format("Maze generation time(ms): %s", mazeGenerator.measureAlgorithmTimeMillis(5,5/*rows*/,5/*columns*/)));
         // generate another maze
-        Maze3D maze = mazeGenerator.generate(5,5/*rows*/, 5/*columns*/);
+        Maze3D maze = mazeGenerator.generate(100,100/*rows*/, 100/*columns*/);
 
         // prints the maze
         maze.print();
