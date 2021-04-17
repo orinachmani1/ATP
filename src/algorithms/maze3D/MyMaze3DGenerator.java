@@ -54,8 +54,17 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
             for (int j = 0; j < row; j++) {
                 for (int k = 0; k < column ; k++) {
                 Position3D p = new Position3D(i,j,k);
-                if(!getVisited(p)) { maze.setCell(p,1);
+                if(!getVisited(p))
+                {
+                    maze.setCell(p,1);
                 //if( k==column-1 && k%5 == 1 ){ maze.setCell(p,0);}
+                }
+                if (j==row-1|| k==column-1)
+                {
+                    int randomNum=random.nextInt(100);
+                    if (randomNum>20){ maze.setCell(p,0);}
+                    else { maze.setCell(p,1);}
+
                 }
             }
         }

@@ -55,6 +55,10 @@ public class MyMazeGenerator extends AMazeGenerator{
                 {
                     maze.setCell(p,1);
                 }
+                if (i==rows-1|| j==cols-1){
+                    int randomNum=random.nextInt(20)%2;
+                    maze.setCell(p,randomNum);
+                }
             }
         }
 

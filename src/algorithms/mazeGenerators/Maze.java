@@ -109,9 +109,9 @@ public class Maze {
             for (int j = 0; j < cols; j++) {
                 Position pos = new Position(i, j);
                 if (isEnd(pos)) { s.append(" E "); }
-                else if (isWall(pos)) { s.append(" █ "); }
-                else if (isStart(pos)) { s.append(" S "); }
-                else if (!isWall(pos)) { s.append(" ░ "); }
+                 if (isWall(pos)) { s.append(" 1 "); }
+                 if (isStart(pos)) { s.append(" S "); }
+                 if (!isWall(pos)) { s.append(" 0 "); }
             }
             s.append("}\n");
         }

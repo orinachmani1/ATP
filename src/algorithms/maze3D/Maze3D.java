@@ -89,8 +89,33 @@ public class Maze3D {
 
     public void print()
     {
-        System.out.print(toString());
+        System.out.println("{");
+        for(int depth = 0; depth < grid.length; depth++){
+            for(int row = 0; row < grid[0].length; row++) {
+                System.out.print("{ ");
+                for (int col = 0; col < grid[0][0].length; col++) {
+                    if (depth == start.getDepthIndex() && row == start.getRowIndex() && col == start.getColumnIndex()) // if the position is the start - mark with S
+                        System.out.print("S ");
+                    else {
+                        if (depth == end.getDepthIndex() && row == end.getRowIndex() && col == end.getColumnIndex()) // if the position is the goal - mark with E
+                            System.out.print("E ");
+                        else
+                            System.out.print(grid[depth][row][col] + " ");
+                    }
+                }
+                System.out.println("}");
+            }
+            if(depth < grid.length - 1) {
+                System.out.print("---");
+                for (int i = 0; i < grid[0][0].length; i++)
+                    System.out.print("--");
+                System.out.println();
+            }
+        }
+        System.out.println("}");
     }
+        //System.out.print(toString());
+
 
     @Override
     public String toString() {
@@ -102,13 +127,15 @@ public class Maze3D {
                 for (int k = 0; k < cols ; k++) {
                     Position3D pos = new Position3D(i,j,k);
                     if (isEnd(pos)) { s.append("E "); }
-                    else if (isWall(pos)) { s.append("█ "); }
+                    else if (isWall(pos)) { s.append("1 "); }
                     else if (isStart(pos)) { s.append("S "); }
-                    else if (!isWall(pos)) { s.append("░ "); }
+                    else if (!isWall(pos)) { s.append("0 "); }
                 }
                 s.append("}\n");
             }
-            s.append("-------------\n");
+            if(i<depth-1) {
+                s.append("-------------\n");
+            }
         }
         s.append("}\n\n");
 
